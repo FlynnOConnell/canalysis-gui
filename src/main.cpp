@@ -118,9 +118,7 @@ static void SetupVulkan(const char** extensions, uint32_t extensions_count)
         err = vkEnumeratePhysicalDevices(g_Instance, &gpu_count, gpus);
         check_vk_result(err);
 
-        // If a number >1 of GPUs got reported, find discrete GPU if present, or use first one available. This covers
-        // most common cases (multi-gpu/integrated+dedicated graphics). Handling more complicated setups (multiple
-        // dedicated GPUs) is out of scope of this sample.
+        // If a number >1 of GPUs got reported, find discrete GPU if present, or use first one available. No real need to deal with multiple GPU's. 
         int use_gpu = 0;
         for (int i = 0; i < (int)gpu_count; i++)
         {
@@ -137,7 +135,7 @@ static void SetupVulkan(const char** extensions, uint32_t extensions_count)
         free(gpus);
     }
 
-    // Select graphics queue family
+    // graphics queue family
     {
         uint32_t count;
         vkGetPhysicalDeviceQueueFamilyProperties(g_PhysicalDevice, &count, NULL);
@@ -174,7 +172,7 @@ static void SetupVulkan(const char** extensions, uint32_t extensions_count)
         vkGetDeviceQueue(g_Device, g_QueueFamily, 0, &g_Queue);
     }
 
-    // Create Descriptor Pool
+    // Descriptor Pool
     {
         VkDescriptorPoolSize pool_sizes[] =
         {
@@ -201,13 +199,12 @@ static void SetupVulkan(const char** extensions, uint32_t extensions_count)
     }
 }
 
-// All the ImGui_ImplVulkanH_XXX structures/functions are optional helpers used by the demo.
-// Your real engine/app may not use them.
+// Create the vulkan window
 static void SetupVulkanWindow(ImGui_ImplVulkanH_Window* wd, VkSurfaceKHR surface, int width, int height)
 {
     wd->Surface = surface;
 
-    // Check for WSI support
+    // WSI support
     VkBool32 res;
     vkGetPhysicalDeviceSurfaceSupportKHR(g_PhysicalDevice, g_QueueFamily, wd->Surface, &res);
     if (res != VK_TRUE)
@@ -385,8 +382,6 @@ int main(int, char**)
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
-    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
     //io.ConfigViewportsNoAutoMerge = true;
     //io.ConfigViewportsNoTaskBarIcon = true;
 
@@ -396,7 +391,7 @@ int main(int, char**)
 
     // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
     ImGuiStyle& style = ImGui::GetStyle();
-    if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+    if (io.ConfigFlags)
     {
         style.WindowRounding = 0.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
@@ -547,13 +542,6 @@ int main(int, char**)
         wd->ClearValue.color.float32[3] = clear_color.w;
         if (!main_is_minimized)
             FrameRender(wd, main_draw_data);
-
-        // Update and Render additional Platform Windows
-        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-        {
-            ImGui::UpdatePlatformWindows();
-            ImGui::RenderPlatformWindowsDefault();
-        }
 
         // Present Main Platform Window
         if (!main_is_minimized)
