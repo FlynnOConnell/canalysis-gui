@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\repos\gui_canalysis\x64\Release\gui_canalysis.exe</FullPath>
+      <FullPath>C:\repos\canalysis-gui\x64\Release\gui_canalysis.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

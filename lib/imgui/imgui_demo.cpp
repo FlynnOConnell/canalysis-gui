@@ -198,9 +198,6 @@ static void ShowExampleMenuFile();
 // We split the contents of the big ShowDemoWindow() function into smaller functions
 // (because the link time of very large functions grow non-linearly)
 static void ShowDemoWindowWidgets();
-static void ShowDemoWindowLayout();
-static void ShowDemoWindowPopups();
-static void ShowDemoWindowTables();
 static void ShowDemoWindowColumns();
 static void ShowDemoWindowInputs();
 
@@ -410,11 +407,125 @@ void ImGui::ShowDemoWindow(bool* p_open)
         ImGui::EndMenuBar();
     }
 
-    ImGui::Text("Calcium Imaging Data analysis!! (%s) (%d)", IMGUI_VERSION, IMGUI_VERSION_NUM);
+    ImGui::Text("Calcium Imaging Data analysis! (%s) (%d)", IMGUI_VERSION, IMGUI_VERSION_NUM);
     ImGui::Spacing();
 
+
     // All demo contents
-    ShowDemoWindowWidgets();
+    ImGui::Begin("Data Analysis", NULL, 0);
+    static bool disable_all = false; // The Checkbox for that is inside the "Disabled" section at the bottom
+    if (disable_all)
+        ImGui::BeginDisabled();
+
+    // Plot/Graph widgets are not very good.
+    // Consider using a third-party library such as ImPlot: https://github.com/epezent/implot
+    // (see others https://github.com/ocornut/imgui/wiki/Useful-Extensions)
+    IMGUI_DEMO_MARKER("Widgets/Plotting");
+    {
+        static bool animate = true;
+        ImGui::Checkbox("Animate", &animate);
+
+        // Plot as lines and plot as histogram
+        IMGUI_DEMO_MARKER("Widgets/Plotting/PlotLines, PlotHistogram");
+        static float arr[] = { 0.6f, 0.1f, 1.0f, 0.5f, 0.92f, 0.1f, 0.2f };
+        ImGui::PlotLines("Frame Times", arr, IM_ARRAYSIZE(arr));
+        ImGui::PlotHistogram("Histogram", arr, IM_ARRAYSIZE(arr), 0, NULL, 0.0f, 1.0f, ImVec2(0, 80.0f));
+
+        // Fill an array of contiguous float values to plot
+        // Tip: If your float aren't contiguous but part of a structure, you can pass a pointer to your first float
+        // and the sizeof() of your structure in the "stride" parameter.
+        static float values[90] = {};
+        static int values_offset = 0;
+        static double refresh_time = 0.0;
+        if (!animate || refresh_time == 0.0)
+            refresh_time = ImGui::GetTime();
+        while (refresh_time < ImGui::GetTime()) // Create data at fixed 60 Hz rate for the demo
+        {
+            static float phase = 0.0f;
+            values[values_offset] = cosf(phase);
+            values_offset = (values_offset + 1) % IM_ARRAYSIZE(values);
+            phase += 0.10f * values_offset;
+            refresh_time += 1.0f / 60.0f;
+        }
+
+        // Plots can display overlay texts
+        // (in this example, we will display an average value)
+        {
+            float average = 0.0f;
+            for (int n = 0; n < IM_ARRAYSIZE(values); n++)
+                average += values[n];
+            average /= (float)IM_ARRAYSIZE(values);
+            char overlay[32];
+            sprintf(overlay, "avg %f", average);
+            ImGui::PlotLines("Lines", values, IM_ARRAYSIZE(values), values_offset, overlay, -1.0f, 1.0f, ImVec2(0, 80.0f));
+        }
+
+        // Use functions to generate output
+        // FIXME: This is rather awkward because current plot API only pass in indices.
+        // We probably want an API passing floats and user provide sample rate/count.
+        struct Funcs
+        {
+            static float Sin(void*, int i) { return sinf(i * 0.1f); }
+            static float Saw(void*, int i) { return (i & 1) ? 1.0f : -1.0f; }
+        };
+        static int func_type = 0, display_count = 70;
+        ImGui::Separator();
+        ImGui::SetNextItemWidth(ImGui::GetFontSize() * 8);
+        ImGui::Combo("func", &func_type, "Sin\0Saw\0");
+        ImGui::SameLine();
+        ImGui::SliderInt("Sample count", &display_count, 1, 400);
+        float (*func)(void*, int) = (func_type == 0) ? Funcs::Sin : Funcs::Saw;
+        ImGui::PlotLines("Lines", func, NULL, display_count, 0, NULL, -1.0f, 1.0f, ImVec2(0, 80));
+        ImGui::PlotHistogram("Histogram", func, NULL, display_count, 0, NULL, -1.0f, 1.0f, ImVec2(0, 80));
+        ImGui::Separator();
+
+        // Animate a simple progress bar
+        IMGUI_DEMO_MARKER("Widgets/Plotting/ProgressBar");
+        static float progress = 0.0f, progress_dir = 1.0f;
+        if (animate)
+        {
+            progress += progress_dir * 0.4f * ImGui::GetIO().DeltaTime;
+            if (progress >= +1.1f) { progress = +1.1f; progress_dir *= -1.0f; }
+            if (progress <= -0.1f) { progress = -0.1f; progress_dir *= -1.0f; }
+        }
+    }
+
+    IMGUI_DEMO_MARKER("Widgets/Drag and Slider Flags");
+    {
+        int flags = 0;
+        // Drags
+        static float drag_f = 0.5f;
+        static int drag_i = 50;
+        ImGui::Text("Underlying float value: %f", drag_f);
+        ImGui::DragFloat("DragFloat (0 -> 1)", &drag_f, 0.005f, 0.0f, 1.0f, "%.3f", flags);
+        ImGui::DragFloat("DragFloat (0 -> +inf)", &drag_f, 0.005f, 0.0f, FLT_MAX, "%.3f", flags);
+        ImGui::DragFloat("DragFloat (-inf -> 1)", &drag_f, 0.005f, -FLT_MAX, 1.0f, "%.3f", flags);
+        ImGui::DragFloat("DragFloat (-inf -> +inf)", &drag_f, 0.005f, -FLT_MAX, +FLT_MAX, "%.3f", flags);
+        ImGui::DragInt("DragInt (0 -> 100)", &drag_i, 0.5f, 0, 100, "%d", flags);
+
+        // Sliders
+        static float slider_f = 0.5f;
+        static int slider_i = 50;
+        ImGui::Text("Underlying float value: %f", slider_f);
+        ImGui::SliderFloat("SliderFloat (0 -> 1)", &slider_f, 0.0f, 1.0f, "%.3f", flags);
+        ImGui::SliderInt("SliderInt (0 -> 100)", &slider_i, 0, 100, "%d", flags);
+    }
+
+    IMGUI_DEMO_MARKER("Widgets/Range Widgets");
+
+    {
+        static float begin = 10, end = 90;
+        static int begin_i = 100, end_i = 1000;
+        ImGui::DragFloatRange2("range float", &begin, &end, 0.25f, 0.0f, 100.0f, "Min: %.1f %%", "Max: %.1f %%", ImGuiSliderFlags_AlwaysClamp);
+        ImGui::DragIntRange2("range int", &begin_i, &end_i, 5, 0, 1000, "Min: %d units", "Max: %d units");
+        ImGui::DragIntRange2("range int (no bounds)", &begin_i, &end_i, 5, 0, 0, "Min: %d units", "Max: %d units");
+    }
+
+    // Demonstrate BeginDisabled/EndDisabled using a checkbox located at the bottom of the section (which is a bit odd:
+    // logically we'd have this checkbox at the top of the section, but we don't want this feature to steal that space)
+    if (disable_all)
+        ImGui::EndDisabled();
+    ImGui::End();
 
     // End of ShowDemoWindow()
     ImGui::PopItemWidth();

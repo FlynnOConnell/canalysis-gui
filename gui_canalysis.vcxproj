@@ -146,6 +146,7 @@
     <ClInclude Include="lib\imgui\imstb_truetype.h" />
     <ClInclude Include="lib\imgui\misc\cpp\imgui_stdlib.h" />
     <ClInclude Include="lib\imgui\misc\single_file\imgui_single_file.h" />
+    <ClInclude Include="Resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gui_canalysis.cpp" />
@@ -158,14 +159,18 @@
     <ClCompile Include="lib\imgui\imgui_widgets.cpp" />
     <ClCompile Include="lib\imgui\misc\cpp\imgui_stdlib.cpp" />
     <ClCompile Include="lib\imgui\misc\fonts\binary_to_compressed_c.cpp" />
-    <ClCompile Include="vulkan_util.cpp" />
+    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="gui_canalysis.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="build_win64.bat" />
     <None Include="imgui.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="lib\imgui\misc\fonts\Roboto-Medium.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

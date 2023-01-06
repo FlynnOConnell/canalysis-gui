@@ -54,6 +54,9 @@
     <ClInclude Include="lib\glfw\include\GLFW\glfw3native.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gui_canalysis.cpp">
@@ -86,7 +89,7 @@
     <ClCompile Include="lib\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vulkan_util.cpp">
+    <ClCompile Include="window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -100,5 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />
+    <None Include="build_win64.bat">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="lib\imgui\misc\fonts\Roboto-Medium.ttf" />
   </ItemGroup>
 </Project>

@@ -43,5 +43,6 @@ void glfw_error_callback(int error, const char* description);
 
 void FramePresent(ImGui_ImplVulkanH_Window* wd);
 
-
 void CleanupVulkanWindow();
+
+void ShowPlottingWindow(bool* p_open);
