@@ -1,0 +1,581 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C33010",
+          "message": {
+            "text": "Unchecked lower bound for enum key used as index.."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                },
+                "region": {
+                  "startLine": 2775,
+                  "startColumn": 102,
+                  "endLine": 2775,
+                  "endColumn": 126
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ShowDemoWindowInputs::funcs::IsLegacyNativeDupe",
+                  "decoratedName": "?IsLegacyNativeDupe@funcs@?BA@??ShowDemoWindowInputs@@YAXXZ@SA_NW4ImGuiKey@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 2775,
+                            "startColumn": 40
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 2775,
+                            "startColumn": 86
+                          }
+                        },
+                        "message": {
+                          "text": "Branching based on condition 'key < 512'. 'true' branch is taken\nEnum value 'key' is checked for upper bound."
+                        }
+                      },
+                      "kinds": [
+                        "Combination"
+                      ],
+                      "importance": "essential"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 2775,
+                            "startColumn": 102
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 2775,
+                            "startColumn": 122
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6011",
+          "message": {
+            "text": "Dereferencing NULL pointer 'p_open'. "
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                },
+                "region": {
+                  "startLine": 4966,
+                  "startColumn": 18,
+                  "endLine": 4966,
+                  "endColumn": 27
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ShowExampleAppDockSpace",
+                  "decoratedName": "?ShowExampleAppDockSpace@@YAXPEA_N@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4894,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4895,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4896,
+                            "startColumn": 31
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4900,
+                            "startColumn": 22
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4901,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4914,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4919,
+                            "startColumn": 25
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4927,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4929,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4930,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4933,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4937,
+                            "startColumn": 14
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4938,
+                            "startColumn": 24
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4945,
+                            "startColumn": 35
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4948,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4950,
+                            "startColumn": 29
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4954,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4955,
+                            "startColumn": 28
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4956,
+                            "startColumn": 29
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4958,
+                            "startColumn": 32
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4959,
+                            "startColumn": 32
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4960,
+                            "startColumn": 32
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4961,
+                            "startColumn": 32
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4962,
+                            "startColumn": 32
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4963,
+                            "startColumn": 29
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4965,
+                            "startColumn": 32
+                          }
+                        },
+                        "message": {
+                          "text": "'p_open' may be NULL (Enter this branch)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+                          },
+                          "region": {
+                            "startLine": 4966,
+                            "startColumn": 25
+                          }
+                        },
+                        "message": {
+                          "text": "'p_open' is dereferenced, but may still be NULL"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.34.31933.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_demo.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "f242afca117c2460632468491951ca9b6607a6154cd2b14f73bd1f34d4ef8e16"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/imgui.h"
+          },
+          "hashes": {
+            "sha-256": "b33ca0413470001ffb2e994cd9889aa8babf2bed3e4252ac9772af1d1eec973f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/imconfig.h"
+          },
+          "hashes": {
+            "sha-256": "ee19126d062647ced5ad53a065bfa3cab04b1f14b65a6f72da3c9139f2b425ab"
+          }
+        }
+      ]
+    }
+  ]
+}

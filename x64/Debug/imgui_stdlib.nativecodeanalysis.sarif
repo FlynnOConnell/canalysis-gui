@@ -1,0 +1,59 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.34.31933.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/misc/cpp/imgui_stdlib.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "931ab7e1ba58d48d08db44713c8ec489136c20d946d61f961254d94348870790"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/imgui.h"
+          },
+          "hashes": {
+            "sha-256": "b33ca0413470001ffb2e994cd9889aa8babf2bed3e4252ac9772af1d1eec973f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/imconfig.h"
+          },
+          "hashes": {
+            "sha-256": "ee19126d062647ced5ad53a065bfa3cab04b1f14b65a6f72da3c9139f2b425ab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/misc/cpp/imgui_stdlib.h"
+          },
+          "hashes": {
+            "sha-256": "d96841c219f98cb195cac9bd6242aec9e4b971143cbdda32a55cb3c4d5b0d140"
+          }
+        }
+      ]
+    }
+  ]
+}

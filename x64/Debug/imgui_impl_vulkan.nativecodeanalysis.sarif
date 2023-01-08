@@ -1,0 +1,141 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_impl_vulkan.cpp"
+                },
+                "region": {
+                  "startLine": 619,
+                  "startColumn": 26,
+                  "endLine": 619,
+                  "endColumn": 43
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ImGui_ImplVulkan_CreateFontsTexture",
+                  "decoratedName": "?ImGui_ImplVulkan_CreateFontsTexture@@YA_NPEAUVkCommandBuffer_T@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26451",
+          "message": {
+            "text": "Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_impl_vulkan.cpp"
+                },
+                "region": {
+                  "startLine": 619,
+                  "startColumn": 26,
+                  "endLine": 619,
+                  "endColumn": 34
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "ImGui_ImplVulkan_CreateFontsTexture",
+                  "decoratedName": "?ImGui_ImplVulkan_CreateFontsTexture@@YA_NPEAUVkCommandBuffer_T@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.34.31933.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/repos/canalysis-gui/lib/imgui/imgui_impl_vulkan.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "7c6c8558b8cf11dd8ad9dd2d27be21e27d23807e0e68182ca9542dba75bf390e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/imgui_impl_vulkan.h"
+          },
+          "hashes": {
+            "sha-256": "f244d422338be9642cad8655dbd7e9adf404a7238c5477191fd95c0c9f2aa48a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/imgui.h"
+          },
+          "hashes": {
+            "sha-256": "b33ca0413470001ffb2e994cd9889aa8babf2bed3e4252ac9772af1d1eec973f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/repos/canalysis-gui/lib/imgui/imconfig.h"
+          },
+          "hashes": {
+            "sha-256": "ee19126d062647ced5ad53a065bfa3cab04b1f14b65a6f72da3c9139f2b425ab"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vulkansdk/1.3.236.0/include/vulkan/vulkan.h"
+          },
+          "hashes": {
+            "sha-256": "7143c7bc9f49bdc0202b06bdeb1c7b29812a61edd38e342e4c05f746a0e1451a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vulkansdk/1.3.236.0/include/vulkan/vk_platform.h"
+          },
+          "hashes": {
+            "sha-256": "6bc08085985094224a327df89802ec72451e138587e9ec6675a0bd4c940dcce9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/vulkansdk/1.3.236.0/include/vulkan/vulkan_core.h"
+          },
+          "hashes": {
+            "sha-256": "1d1118ceb2ecb0be2e608ee0cc1008e7bd91519e6d60017cc641dc73f3c8a00e"
+          }
+        }
+      ]
+    }
+  ]
+}

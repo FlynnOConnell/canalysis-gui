@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "resource.h"
@@ -38,8 +37,6 @@ void SetupVulkanWindow(ImGui_ImplVulkanH_Window* wd, VkSurfaceKHR surface, int w
 void CleanupVulkan();
 
 void check_vk_result(VkResult err);
-
-void glfw_error_callback(int error, const char* description);
 
 void FramePresent(ImGui_ImplVulkanH_Window* wd);
 
